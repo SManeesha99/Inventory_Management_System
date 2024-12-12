@@ -1,8 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "qb8/xHrN5+nqm+bIPjFURVm6QunXqWdosZZvQNyd9+SaONW2M6BBsm89fEAbF2ES5xKWY342l7/aHeC02Y3PaA==",
+  "dgSpecHash": "Uji7dCjTkJVVtu02yvQU4K6aZXQOTRfW7J/gqrgnzm0d09hfHEWaV6Lc5XroDXfqJImYC456uRO0cGbcRAUBGw==",
   "success": true,
   "projectFilePath": "D:\\Projects\\C#\\InventoryManagementSystem\\InventoryManagementSystem\\InventoryManagementSystem.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Maniya\\.nuget\\packages\\runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
+    "C:\\Users\\Maniya\\.nuget\\packages\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
+    "C:\\Users\\Maniya\\.nuget\\packages\\runtime.win-x64.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-x64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
+    "C:\\Users\\Maniya\\.nuget\\packages\\runtime.win-x86.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-x86.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
+    "C:\\Users\\Maniya\\.nuget\\packages\\system.data.sqlclient\\4.9.0\\system.data.sqlclient.4.9.0.nupkg.sha512"
+  ],
   "logs": []
 }
