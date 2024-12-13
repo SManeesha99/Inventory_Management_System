@@ -25,3 +25,5 @@ D:\Projects\C#\InventoryManagementSystem\InventoryManagementSystem\bin\Debug\net
 D:\Projects\C#\InventoryManagementSystem\InventoryManagementSystem\bin\Debug\net7.0-windows\runtimes\win\lib\net6.0\System.Data.SqlClient.dll
 D:\Projects\C#\InventoryManagementSystem\InventoryManagementSystem\obj\Debug\net7.0-windows\InventoryManagementSystem.csproj.AssemblyReference.cache
 D:\Projects\C#\InventoryManagementSystem\InventoryManagementSystem\obj\Debug\net7.0-windows\InventoryManagementSystem.csproj.CopyComplete
+D:\Projects\C#\InventoryManagementSystem\InventoryManagementSystem\obj\Debug\net7.0-windows\InventoryManagementSystem.MainForm.resources
+D:\Projects\C#\InventoryManagementSystem\InventoryManagementSystem\obj\Debug\net7.0-windows\InventoryManagementSystem.AdminDashboard.resources

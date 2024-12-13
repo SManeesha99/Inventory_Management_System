@@ -48,6 +48,7 @@ namespace InventoryManagementSystem
             {
                 if (checkConnection())
                 {
+
                     try
                     {
                         connect.Open();
@@ -64,6 +65,10 @@ namespace InventoryManagementSystem
                             if(table.Rows.Count > 0)
                             {
                                 MessageBox.Show("Login Successfully!", "Information Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                                MainForm mainForm = new MainForm();
+                                mainForm.Show();
+                                this.Hide();
                             }
                             else
                             {
@@ -100,24 +105,3 @@ namespace InventoryManagementSystem
     }
 }
 
-//connect.Open();
-//String selectData = "SELECT * FROM users WHERE username = @username AND password = @password";
-//using (SqlCommand cmd = new SqlCommand(selectData, connect))
-//{
-//    cmd.Parameters.AddWithValue("@username", username.Text.Trim());
-//    cmd.Parameters.AddWithValue("Password", password.Text.Trim());
-//    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-//    DataTable table = new DataTable();
-//    adapter.Fill(table);
-
-//    if (table.Rows.Count >= 1)
-//    {
-//        MessageBox.Show("Login Successfully!", "Information Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
-//        MainForm mainform = new MainForm();
-//        mainform.Show();
-//        this.Hide();
-//    }
-//    else
-//    {
-//        MessageBox.Show("Incorrect Username/Password", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
-//    }
