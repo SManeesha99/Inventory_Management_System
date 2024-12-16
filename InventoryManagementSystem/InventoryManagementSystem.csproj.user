@@ -1,7 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
+    <Compile Update="AdminCategoriesManage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="AdminDashboard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="AdminProductsManage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="Form1.cs">
@@ -15,6 +21,9 @@
     </Compile>
     <Compile Update="RegisterForm.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="UserManage.cs">
+      <SubType>UserControl</SubType>
     </Compile>
   </ItemGroup>
 </Project>

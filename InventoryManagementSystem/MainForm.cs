@@ -34,5 +34,15 @@ namespace InventoryManagementSystem
                 this.Hide();
             }
         }
+
+        private void adminDashBtn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void adminCategoriesManage1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

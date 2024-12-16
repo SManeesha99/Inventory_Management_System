@@ -36,12 +36,15 @@
             button5 = new Button();
             button4 = new Button();
             button3 = new Button();
-            button2 = new Button();
+            adminDashBtn = new Button();
             label2 = new Label();
             label1 = new Label();
             pictureBox1 = new PictureBox();
             panel3 = new Panel();
+            adminCategoriesManage1 = new AdminCategoriesManage();
+            userManage1 = new UserManage();
             adminDashboard1 = new AdminDashboard();
+            adminProductsManage1 = new AdminProductsManage();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -81,7 +84,7 @@
             panel2.Controls.Add(button5);
             panel2.Controls.Add(button4);
             panel2.Controls.Add(button3);
-            panel2.Controls.Add(button2);
+            panel2.Controls.Add(adminDashBtn);
             panel2.Controls.Add(label2);
             panel2.Controls.Add(label1);
             panel2.Controls.Add(pictureBox1);
@@ -167,20 +170,21 @@
             button3.Text = "Users";
             button3.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // adminDashBtn
             // 
-            button2.FlatAppearance.BorderSize = 0;
-            button2.FlatAppearance.MouseDownBackColor = Color.FromArgb(1, 87, 52);
-            button2.FlatAppearance.MouseOverBackColor = Color.FromArgb(1, 87, 52);
-            button2.FlatStyle = FlatStyle.Flat;
-            button2.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
-            button2.ForeColor = Color.White;
-            button2.Location = new Point(12, 264);
-            button2.Name = "button2";
-            button2.Size = new Size(260, 40);
-            button2.TabIndex = 3;
-            button2.Text = "Dashboard";
-            button2.UseVisualStyleBackColor = true;
+            adminDashBtn.FlatAppearance.BorderSize = 0;
+            adminDashBtn.FlatAppearance.MouseDownBackColor = Color.FromArgb(1, 87, 52);
+            adminDashBtn.FlatAppearance.MouseOverBackColor = Color.FromArgb(1, 87, 52);
+            adminDashBtn.FlatStyle = FlatStyle.Flat;
+            adminDashBtn.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
+            adminDashBtn.ForeColor = Color.White;
+            adminDashBtn.Location = new Point(12, 264);
+            adminDashBtn.Name = "adminDashBtn";
+            adminDashBtn.Size = new Size(260, 40);
+            adminDashBtn.TabIndex = 3;
+            adminDashBtn.Text = "Dashboard";
+            adminDashBtn.UseVisualStyleBackColor = true;
+            adminDashBtn.Click += adminDashBtn_Click;
             // 
             // label2
             // 
@@ -215,6 +219,9 @@
             // 
             // panel3
             // 
+            panel3.Controls.Add(adminProductsManage1);
+            panel3.Controls.Add(adminCategoriesManage1);
+            panel3.Controls.Add(userManage1);
             panel3.Controls.Add(adminDashboard1);
             panel3.Dock = DockStyle.Fill;
             panel3.Location = new Point(286, 45);
@@ -222,12 +229,34 @@
             panel3.Size = new Size(1049, 756);
             panel3.TabIndex = 2;
             // 
+            // adminCategoriesManage1
+            // 
+            adminCategoriesManage1.Location = new Point(0, 0);
+            adminCategoriesManage1.Name = "adminCategoriesManage1";
+            adminCategoriesManage1.Size = new Size(1311, 945);
+            adminCategoriesManage1.TabIndex = 2;
+            adminCategoriesManage1.Load += adminCategoriesManage1_Load;
+            // 
+            // userManage1
+            // 
+            userManage1.Location = new Point(0, 0);
+            userManage1.Name = "userManage1";
+            userManage1.Size = new Size(1311, 945);
+            userManage1.TabIndex = 1;
+            // 
             // adminDashboard1
             // 
             adminDashboard1.Location = new Point(0, 0);
             adminDashboard1.Name = "adminDashboard1";
             adminDashboard1.Size = new Size(1311, 945);
             adminDashboard1.TabIndex = 0;
+            // 
+            // adminProductsManage1
+            // 
+            adminProductsManage1.Location = new Point(0, 0);
+            adminProductsManage1.Name = "adminProductsManage1";
+            adminProductsManage1.Size = new Size(1311, 945);
+            adminProductsManage1.TabIndex = 3;
             // 
             // MainForm
             // 
@@ -257,7 +286,7 @@
         private PictureBox pictureBox1;
         private Label label2;
         private Label label1;
-        private Button button2;
+        private Button adminDashBtn;
         private Button button6;
         private Button button5;
         private Button button4;
@@ -265,5 +294,8 @@
         private Button logoutBtn;
         private Panel panel3;
         private AdminDashboard adminDashboard1;
+        private UserManage userManage1;
+        private AdminCategoriesManage adminCategoriesManage1;
+        private AdminProductsManage adminProductsManage1;
     }
 }
