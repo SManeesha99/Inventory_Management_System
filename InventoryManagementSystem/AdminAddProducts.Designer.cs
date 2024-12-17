@@ -110,6 +110,7 @@
             proClearBtn.TabIndex = 17;
             proClearBtn.Text = "Clear";
             proClearBtn.UseVisualStyleBackColor = false;
+            proClearBtn.Click += proClearBtn_Click;
             // 
             // proRemoveBtn
             // 
@@ -142,6 +143,7 @@
             proUpdateBtn.TabIndex = 15;
             proUpdateBtn.Text = "Update";
             proUpdateBtn.UseVisualStyleBackColor = false;
+            proUpdateBtn.Click += proUpdateBtn_Click;
             // 
             // proAddBtn
             // 
@@ -312,6 +314,7 @@
             proDataGridView.RowTemplate.Height = 29;
             proDataGridView.Size = new Size(957, 338);
             proDataGridView.TabIndex = 1;
+            proDataGridView.CellClick += proDataGridView_CellClick;
             // 
             // label1
             // 

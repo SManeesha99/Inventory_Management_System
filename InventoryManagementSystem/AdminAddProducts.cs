@@ -1,13 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+﻿using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace InventoryManagementSystem
 {
@@ -93,7 +85,6 @@ namespace InventoryManagementSystem
                                     insertD.Parameters.AddWithValue("@proPrice", pro_price.Text.Trim());
                                     insertD.Parameters.AddWithValue("@proStock", pro_stock.Text.Trim());
                                     insertD.Parameters.AddWithValue("@imgPath", path);
-                                    //insertD.Parameters.AddWithValue("@proStatus", pro_status.SelectedItem.ToString());
                                     insertD.Parameters.AddWithValue("@catogery", Convert.ToInt32(pro_cat.SelectedValue));
                                     insertD.Parameters.AddWithValue("@proStatus", pro_status.Text.Trim());
                                     DateTime today = DateTime.Today;
@@ -131,6 +122,7 @@ namespace InventoryManagementSystem
             pro_status.SelectedIndex = -1;
             pro_cat.SelectedIndex = -1;
             proImg.Image = null;
+            imagePath = "";
         }
 
         public bool checkConnection()
@@ -184,6 +176,119 @@ namespace InventoryManagementSystem
             {
                 MessageBox.Show("Error " + ex, "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private int getID = 0;
+        private String imagePath;
+        private void proDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex != -1)
+            {
+                DataGridViewRow row = proDataGridView.Rows[e.RowIndex];
+                getID = (int)row.Cells[0].Value;
+                pro_id.Text = row.Cells[1].Value.ToString();
+                pro_name.Text = row.Cells[2].Value.ToString();
+                pro_cat.Text = row.Cells[3].Value.ToString();
+                pro_price.Text = row.Cells[4].Value.ToString();
+                pro_stock.Text = row.Cells[5].Value.ToString();
+
+                imagePath = row.Cells[6].Value.ToString();
+                string imageData = row.Cells[6].Value.ToString();
+                if (imageData != null && imageData.Length > 0)
+                {
+                    proImg.Image = Image.FromFile(imageData);
+                }
+                else
+                {
+                    proImg.Image = null;
+                }
+
+
+                pro_status.Text = row.Cells[7].Value.ToString();
+
+            }
+        }
+
+        private void proUpdateBtn_Click(object sender, EventArgs e)
+        {
+            if (emptyFeilds())
+            {
+                MessageBox.Show("Please fill all blank fields", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                if (MessageBox.Show("Are you sure you want to update product ID " + getID + " ? ", "Confirmation Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    if (checkConnection())
+                    {
+                        try
+                        {
+                            connect.Open();
+
+                            string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
+
+                            //prod_name,prod_price,prod_stock,image_path,categoryID,prod_status
+                            //@proName,@proPrice,@proStock,@imgPath,@catogery,@proStatus
+
+                            string updateQuery = "UPDATE products SET prod_name = @proName, prod_price = @proPrice, prod_stock = @proStock, " +
+                     "image_path = @imgPath, categoryID = @catogery, prod_status = @proStatus " +
+                     "WHERE prod_id = @proID";
+
+                            using (SqlCommand updateD = new SqlCommand(updateQuery, connect))
+                            {
+                                updateD.Parameters.AddWithValue("@proID", pro_id.Text.Trim());
+                                updateD.Parameters.AddWithValue("@proName", pro_name.Text.Trim());
+                                updateD.Parameters.AddWithValue("@proPrice", pro_price.Text.Trim());
+                                updateD.Parameters.AddWithValue("@proStock", pro_stock.Text.Trim());
+
+                                // File Handling
+                                string relativePath = Path.Combine("ProductsDirectory", pro_id.Text.Trim() + ".jpg");
+                                string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, relativePath);
+
+                                if (!Directory.Exists(Path.GetDirectoryName(path)))
+                                    Directory.CreateDirectory(Path.GetDirectoryName(path));
+
+                                if (!string.IsNullOrEmpty(proImg.ImageLocation))
+                                {
+                                    if (File.Exists(path))
+                                        File.Delete(path);
+
+                                    File.Copy(proImg.ImageLocation, path, true);
+                                }
+                                else
+                                {
+                                    MessageBox.Show("No image selected. Please select an image before updating.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    return;
+                                }
+
+                                updateD.Parameters.AddWithValue("@imgPath", path);
+                                updateD.Parameters.AddWithValue("@catogery", Convert.ToInt32(pro_cat.SelectedValue));
+                                updateD.Parameters.AddWithValue("@proStatus", pro_status.Text.Trim());
+
+                                updateD.ExecuteNonQuery();
+                                MessageBox.Show("Update Successfully!", "Confirmation Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                clearFields();
+                                displayProductsData();
+                            }
+
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Error database connecting " + ex.Message, "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        finally
+                        {
+                            connect.Close();
+                        }
+                    }
+                }
+
+            }
+        }
+
+        private void proClearBtn_Click(object sender, EventArgs e)
+        {
+            clearFields();
         }
     }
 }
