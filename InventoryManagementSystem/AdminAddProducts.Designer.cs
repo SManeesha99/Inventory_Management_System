@@ -1,6 +1,6 @@
 ﻿namespace InventoryManagementSystem
 {
-    partial class AdminProductsManage
+    partial class AdminAddProducts
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,10 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            panel1 = new Panel();
-            proDataGridView = new DataGridView();
-            label1 = new Label();
             panel2 = new Panel();
+            pro_status = new ComboBox();
             proClearBtn = new Button();
             proRemoveBtn = new Button();
             proUpdateBtn = new Button();
@@ -39,7 +37,6 @@
             proImgUploadBtn = new Button();
             panel3 = new Panel();
             proImg = new PictureBox();
-            pro_status = new ComboBox();
             pro_cat = new ComboBox();
             pro_stock = new TextBox();
             pro_price = new TextBox();
@@ -51,56 +48,26 @@
             label4 = new Label();
             label3 = new Label();
             label2 = new Label();
-            panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)proDataGridView).BeginInit();
+            panel1 = new Panel();
+            proDataGridView = new DataGridView();
+            label1 = new Label();
             panel2.SuspendLayout();
             panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)proImg).BeginInit();
+            panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)proDataGridView).BeginInit();
             SuspendLayout();
-            // 
-            // panel1
-            // 
-            panel1.BackColor = Color.White;
-            panel1.Controls.Add(proDataGridView);
-            panel1.Controls.Add(label1);
-            panel1.Location = new Point(19, 21);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(1005, 417);
-            panel1.TabIndex = 0;
-            // 
-            // proDataGridView
-            // 
-            proDataGridView.AllowUserToAddRows = false;
-            proDataGridView.AllowUserToDeleteRows = false;
-            proDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            proDataGridView.Location = new Point(22, 55);
-            proDataGridView.Name = "proDataGridView";
-            proDataGridView.ReadOnly = true;
-            proDataGridView.RowHeadersWidth = 51;
-            proDataGridView.RowTemplate.Height = 29;
-            proDataGridView.Size = new Size(957, 338);
-            proDataGridView.TabIndex = 1;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Arial", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(22, 13);
-            label1.Name = "label1";
-            label1.Size = new Size(150, 27);
-            label1.TabIndex = 0;
-            label1.Text = "All Products";
             // 
             // panel2
             // 
             panel2.BackColor = Color.White;
+            panel2.Controls.Add(pro_status);
             panel2.Controls.Add(proClearBtn);
             panel2.Controls.Add(proRemoveBtn);
             panel2.Controls.Add(proUpdateBtn);
             panel2.Controls.Add(proAddBtn);
             panel2.Controls.Add(proImgUploadBtn);
             panel2.Controls.Add(panel3);
-            panel2.Controls.Add(pro_status);
             panel2.Controls.Add(pro_cat);
             panel2.Controls.Add(pro_stock);
             panel2.Controls.Add(pro_price);
@@ -112,10 +79,19 @@
             panel2.Controls.Add(label4);
             panel2.Controls.Add(label3);
             panel2.Controls.Add(label2);
-            panel2.Location = new Point(19, 456);
+            panel2.Location = new Point(18, 458);
             panel2.Name = "panel2";
             panel2.Size = new Size(1005, 269);
-            panel2.TabIndex = 1;
+            panel2.TabIndex = 3;
+            // 
+            // pro_status
+            // 
+            pro_status.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            pro_status.FormattingEnabled = true;
+            pro_status.Location = new Point(497, 116);
+            pro_status.Name = "pro_status";
+            pro_status.Size = new Size(220, 31);
+            pro_status.TabIndex = 18;
             // 
             // proClearBtn
             // 
@@ -133,7 +109,6 @@
             proClearBtn.TabIndex = 17;
             proClearBtn.Text = "Clear";
             proClearBtn.UseVisualStyleBackColor = false;
-            proClearBtn.Click += proClearBtn_Click;
             // 
             // proRemoveBtn
             // 
@@ -218,16 +193,6 @@
             proImg.SizeMode = PictureBoxSizeMode.StretchImage;
             proImg.TabIndex = 0;
             proImg.TabStop = false;
-            // 
-            // pro_status
-            // 
-            pro_status.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            pro_status.FormattingEnabled = true;
-            pro_status.Items.AddRange(new object[] { "Available", "Unavailable" });
-            pro_status.Location = new Point(497, 116);
-            pro_status.Name = "pro_status";
-            pro_status.Size = new Size(220, 31);
-            pro_status.TabIndex = 11;
             // 
             // pro_cat
             // 
@@ -324,31 +289,72 @@
             label2.TabIndex = 0;
             label2.Text = "Products ID:";
             // 
-            // AdminProductsManage
+            // panel1
+            // 
+            panel1.BackColor = Color.White;
+            panel1.Controls.Add(proDataGridView);
+            panel1.Controls.Add(label1);
+            panel1.Location = new Point(18, 23);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(1005, 417);
+            panel1.TabIndex = 2;
+            // 
+            // proDataGridView
+            // 
+            proDataGridView.AllowUserToAddRows = false;
+            proDataGridView.AllowUserToDeleteRows = false;
+            proDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            proDataGridView.Location = new Point(22, 55);
+            proDataGridView.Name = "proDataGridView";
+            proDataGridView.ReadOnly = true;
+            proDataGridView.RowHeadersWidth = 51;
+            proDataGridView.RowTemplate.Height = 29;
+            proDataGridView.Size = new Size(957, 338);
+            proDataGridView.TabIndex = 1;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Arial", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.Location = new Point(22, 13);
+            label1.Name = "label1";
+            label1.Size = new Size(150, 27);
+            label1.TabIndex = 0;
+            label1.Text = "All Products";
+            // 
+            // AdminAddProducts
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(panel2);
             Controls.Add(panel1);
-            Name = "AdminProductsManage";
+            Name = "AdminAddProducts";
             Size = new Size(1049, 756);
-            Load += AdminProductsManage_Load;
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)proDataGridView).EndInit();
+            Load += AdminAddProducts_Load;
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)proImg).EndInit();
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)proDataGridView).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
-        private Panel panel1;
-        private DataGridView proDataGridView;
-        private Label label1;
         private Panel panel2;
+        private ComboBox pro_status;
+        private Button proClearBtn;
+        private Button proRemoveBtn;
+        private Button proUpdateBtn;
+        private Button proAddBtn;
+        private Button proImgUploadBtn;
+        private Panel panel3;
+        private PictureBox proImg;
+        private ComboBox pro_cat;
+        private TextBox pro_stock;
+        private TextBox pro_price;
         private TextBox pro_name;
         private TextBox pro_id;
         private Label label7;
@@ -357,16 +363,8 @@
         private Label label4;
         private Label label3;
         private Label label2;
-        private Button proClearBtn;
-        private Button proRemoveBtn;
-        private Button proUpdateBtn;
-        private Button proAddBtn;
-        private Button proImgUploadBtn;
-        private Panel panel3;
-        private ComboBox pro_status;
-        private ComboBox pro_cat;
-        private TextBox pro_stock;
-        private TextBox pro_price;
-        private PictureBox proImg;
+        private Panel panel1;
+        private DataGridView proDataGridView;
+        private Label label1;
     }
 }

@@ -28,7 +28,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Product_Directory\" />
+    <Folder Include="ProductsDirectory\" />
   </ItemGroup>
 
 </Project>

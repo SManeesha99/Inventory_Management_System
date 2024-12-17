@@ -11,13 +11,25 @@ using System.Windows.Forms;
 
 namespace InventoryManagementSystem
 {
-    public partial class AdminProductsManage : UserControl
+    public partial class AdminAddProducts : UserControl
     {
         SqlConnection connect = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Maniya\Documents\inventory.mdf;Integrated Security=True;Connect Timeout=30");
-        public AdminProductsManage()
+        public AdminAddProducts()
         {
             InitializeComponent();
             displayProductsData();
+        }
+
+        public bool emptyFeilds()
+        {
+            if (pro_id.Text == "" || pro_name.Text == "" || pro_price.Text == "" || pro_stock.Text == "" || pro_cat.Text == "" || proImg.Image == null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public void displayProductsData()
@@ -29,21 +41,8 @@ namespace InventoryManagementSystem
             proDataGridView.DataSource = listData;
         }
 
-        public bool emptyFeilds()
-        {
-            if (pro_id.Text == "" || pro_name.Text == "" || pro_cat.Text == "" || pro_price.Text == "" || pro_stock.Text == "" || pro_status.Text == "" || proImg.Image == null)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
         private void proAddBtn_Click(object sender, EventArgs e)
         {
-
             if (emptyFeilds())
             {
                 MessageBox.Show("Please fill all blank fields", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -73,7 +72,7 @@ namespace InventoryManagementSystem
                             {
                                 string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
 
-                                string relativePath = Path.Combine("Product_Directory", pro_id.Text.Trim() + ".jpg");
+                                string relativePath = Path.Combine("ProductsDirectory", pro_id.Text.Trim() + ".jpg");
                                 string path = Path.Combine(baseDirectory, relativePath);
 
                                 string directoryPath = Path.GetDirectoryName(path);
@@ -84,9 +83,8 @@ namespace InventoryManagementSystem
 
                                 File.Copy(proImg.ImageLocation, path, true);
 
-
-                                string inserQuery = "INSERT INTO products (prod_id, prod_name, prod_price, prod_stock, image_path, prod_status, categoryID, date) " +
-                                    "VALUES (@proID, @proName, @proPrice, @proStock, @imgPath, @catogery, @proStatus, @date)";
+                                string inserQuery = "INSERT INTO products (prod_id, prod_name, prod_price, prod_stock, image_path, categoryID, date) " +
+                                    "VALUES (@proID, @proName, @proPrice, @proStock, @imgPath, @catogery, @date)";
 
                                 using (SqlCommand insertD = new SqlCommand(inserQuery, connect))
                                 {
@@ -96,8 +94,6 @@ namespace InventoryManagementSystem
                                     insertD.Parameters.AddWithValue("@proStock", pro_stock.Text.Trim());
                                     insertD.Parameters.AddWithValue("@imgPath", path);
                                     insertD.Parameters.AddWithValue("@catogery", Convert.ToInt32(pro_cat.SelectedValue));
-                                    //insertD.Parameters.AddWithValue("@proStatus", pro_status.Text.Trim());
-                                    insertD.Parameters.AddWithValue("@proStatus", pro_status.SelectedItem.ToString().Trim());
 
 
                                     DateTime today = DateTime.Today;
@@ -106,13 +102,12 @@ namespace InventoryManagementSystem
                                     insertD.ExecuteNonQuery();
                                     MessageBox.Show("Added Succesfully!", "Confirmation Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                     clearFields();
-
+                                    displayProductsData();
                                 }
 
                             }
 
                         }
-
                     }
                     catch (Exception ex)
                     {
@@ -131,12 +126,10 @@ namespace InventoryManagementSystem
         {
             pro_id.Text = "";
             pro_name.Text = "";
-            pro_cat.SelectedIndex = -1;
-            pro_status.SelectedIndex = -1;
             pro_stock.Text = "";
             pro_price.Text = "";
+            pro_cat.SelectedIndex = -1;
             proImg.Image = null;
-
         }
 
         public bool checkConnection()
@@ -151,9 +144,25 @@ namespace InventoryManagementSystem
             }
         }
 
-        private void proClearBtn_Click(object sender, EventArgs e)
+        private void LoadCategories()
         {
-            clearFields();
+            string query = "SELECT id, category FROM categories";
+
+            using (SqlCommand cmd = new SqlCommand(query, connect))
+            {
+                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                DataTable table = new DataTable();
+                adapter.Fill(table);
+
+                pro_cat.DataSource = table;
+                pro_cat.DisplayMember = "category";
+                pro_cat.ValueMember = "id";
+            }
+        }
+
+        private void AdminAddProducts_Load(object sender, EventArgs e)
+        {
+            LoadCategories();
         }
 
         private void proImgUploadBtn_Click(object sender, EventArgs e)
@@ -174,28 +183,6 @@ namespace InventoryManagementSystem
             {
                 MessageBox.Show("Error " + ex, "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-        }
-
-        private void LoadCategories()
-        {
-            string query = "SELECT id, category FROM categories";
-
-            using (SqlCommand cmd = new SqlCommand(query, connect))
-            {
-                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-                DataTable table = new DataTable();
-                adapter.Fill(table);
-
-                pro_cat.DataSource = table;
-                pro_cat.DisplayMember = "category";
-                pro_cat.ValueMember = "id";
-            }
-        }
-
-        private void AdminProductsManage_Load(object sender, EventArgs e)
-        {
-            LoadCategories();
         }
     }
 }

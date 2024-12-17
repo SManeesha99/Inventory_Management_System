@@ -44,7 +44,7 @@
             adminCategoriesManage1 = new AdminCategoriesManage();
             userManage1 = new UserManage();
             adminDashboard1 = new AdminDashboard();
-            adminProductsManage1 = new AdminProductsManage();
+            adminAddProducts1 = new AdminAddProducts();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -219,7 +219,7 @@
             // 
             // panel3
             // 
-            panel3.Controls.Add(adminProductsManage1);
+            panel3.Controls.Add(adminAddProducts1);
             panel3.Controls.Add(adminCategoriesManage1);
             panel3.Controls.Add(userManage1);
             panel3.Controls.Add(adminDashboard1);
@@ -251,12 +251,12 @@
             adminDashboard1.Size = new Size(1311, 945);
             adminDashboard1.TabIndex = 0;
             // 
-            // adminProductsManage1
+            // adminAddProducts1
             // 
-            adminProductsManage1.Location = new Point(0, 0);
-            adminProductsManage1.Name = "adminProductsManage1";
-            adminProductsManage1.Size = new Size(1311, 945);
-            adminProductsManage1.TabIndex = 3;
+            adminAddProducts1.Location = new Point(0, 0);
+            adminAddProducts1.Name = "adminAddProducts1";
+            adminAddProducts1.Size = new Size(1311, 945);
+            adminAddProducts1.TabIndex = 3;
             // 
             // MainForm
             // 
@@ -296,6 +296,6 @@
         private AdminDashboard adminDashboard1;
         private UserManage userManage1;
         private AdminCategoriesManage adminCategoriesManage1;
-        private AdminProductsManage adminProductsManage1;
+        private AdminAddProducts adminAddProducts1;
     }
 }
