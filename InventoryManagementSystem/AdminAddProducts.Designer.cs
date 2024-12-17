@@ -88,6 +88,7 @@
             // 
             pro_status.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
             pro_status.FormattingEnabled = true;
+            pro_status.Items.AddRange(new object[] { "Available", "Unavailable" });
             pro_status.Location = new Point(497, 116);
             pro_status.Name = "pro_status";
             pro_status.Size = new Size(220, 31);

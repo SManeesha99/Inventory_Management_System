@@ -22,7 +22,7 @@ namespace InventoryManagementSystem
 
         public bool emptyFeilds()
         {
-            if (pro_id.Text == "" || pro_name.Text == "" || pro_price.Text == "" || pro_stock.Text == "" || pro_cat.Text == "" || proImg.Image == null)
+            if (pro_id.Text == "" || pro_name.Text == "" || pro_price.Text == "" || pro_stock.Text == "" || pro_cat.Text == "" || pro_status.Text == "" || proImg.Image == null)
             {
                 return true;
             }
@@ -83,8 +83,8 @@ namespace InventoryManagementSystem
 
                                 File.Copy(proImg.ImageLocation, path, true);
 
-                                string inserQuery = "INSERT INTO products (prod_id, prod_name, prod_price, prod_stock, image_path, categoryID, date) " +
-                                    "VALUES (@proID, @proName, @proPrice, @proStock, @imgPath, @catogery, @date)";
+                                string inserQuery = "INSERT INTO products (prod_id,prod_name,prod_price,prod_stock,image_path,categoryID,prod_status,date) " +
+                                    "VALUES (@proID,@proName,@proPrice,@proStock,@imgPath,@catogery,@proStatus,@date)";
 
                                 using (SqlCommand insertD = new SqlCommand(inserQuery, connect))
                                 {
@@ -93,9 +93,9 @@ namespace InventoryManagementSystem
                                     insertD.Parameters.AddWithValue("@proPrice", pro_price.Text.Trim());
                                     insertD.Parameters.AddWithValue("@proStock", pro_stock.Text.Trim());
                                     insertD.Parameters.AddWithValue("@imgPath", path);
+                                    //insertD.Parameters.AddWithValue("@proStatus", pro_status.SelectedItem.ToString());
                                     insertD.Parameters.AddWithValue("@catogery", Convert.ToInt32(pro_cat.SelectedValue));
-
-
+                                    insertD.Parameters.AddWithValue("@proStatus", pro_status.Text.Trim());
                                     DateTime today = DateTime.Today;
                                     insertD.Parameters.AddWithValue("@date", today);
 
@@ -128,6 +128,7 @@ namespace InventoryManagementSystem
             pro_name.Text = "";
             pro_stock.Text = "";
             pro_price.Text = "";
+            pro_status.SelectedIndex = -1;
             pro_cat.SelectedIndex = -1;
             proImg.Image = null;
         }

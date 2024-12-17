@@ -15,6 +15,7 @@ namespace InventoryManagementSystem
         public string Price { get; set; }
         public string Stock { get; set; }
         public string ImagePath { get; set; }
+        public string Status { get; set; }
         public string Date { get; set; }
 
         // Method to retrieve all product data
@@ -23,7 +24,7 @@ namespace InventoryManagementSystem
             List<ProductsData> listData = new List<ProductsData>();
             string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Maniya\Documents\inventory.mdf;Integrated Security=True;Connect Timeout=30";
 
-            string selectQuery = "SELECT p.id, p.prod_id, p.prod_name, p.prod_price, p.prod_stock, p.image_path, c.category, p.date " +
+            string selectQuery = "SELECT p.id, p.prod_id, p.prod_name, p.prod_price, p.prod_stock, p.image_path, p.prod_status, c.category, p.date " +
                                  "FROM products p " +
                                  "JOIN categories c ON p.categoryID = c.id";
 
@@ -47,6 +48,7 @@ namespace InventoryManagementSystem
                                     Category = reader["category"]?.ToString(),
                                     Price = reader["prod_price"]?.ToString(),
                                     Stock = reader["prod_stock"]?.ToString(),
+                                    Status = reader["prod_status"]?.ToString(),
                                     ImagePath = reader["image_path"]?.ToString(),
                                     Date = reader["date"]?.ToString()
                                 };
