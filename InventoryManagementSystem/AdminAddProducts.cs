@@ -227,9 +227,6 @@ namespace InventoryManagementSystem
 
                             string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
 
-                            //prod_name,prod_price,prod_stock,image_path,categoryID,prod_status
-                            //@proName,@proPrice,@proStock,@imgPath,@catogery,@proStatus
-
                             string updateQuery = "UPDATE products SET prod_name = @proName, prod_price = @proPrice, prod_stock = @proStock, " +
                      "image_path = @imgPath, categoryID = @catogery, prod_status = @proStatus " +
                      "WHERE prod_id = @proID";
@@ -289,6 +286,47 @@ namespace InventoryManagementSystem
         private void proClearBtn_Click(object sender, EventArgs e)
         {
             clearFields();
+        }
+
+        private void proRemoveBtn_Click(object sender, EventArgs e)
+        {
+            if (pro_id.Text == "")
+            {
+                MessageBox.Show("Please fill all blank fields", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                if (MessageBox.Show("Are you sure you want to delete product ID " + getID + " ? ", "Confirmation Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    if (checkConnection())
+                    {
+                        try
+                        {
+                            connect.Open();
+                            string deleteQuery = "DELETE FROM products WHERE id = @id";
+
+                            using (SqlCommand deleteD = new SqlCommand(deleteQuery, connect))
+                            {
+                                deleteD.Parameters.AddWithValue("@id", getID);
+
+                                deleteD.ExecuteNonQuery();
+                                displayProductsData();
+                                MessageBox.Show("Products Delete Successfully.", "Information Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                clearFields();
+                            }
+
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Error database connecting " + ex, "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        finally
+                        {
+                            connect.Close();
+                        }
+                    }
+                }
+            }
         }
     }
 }

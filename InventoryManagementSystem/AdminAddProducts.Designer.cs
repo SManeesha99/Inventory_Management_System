@@ -127,6 +127,7 @@
             proRemoveBtn.TabIndex = 16;
             proRemoveBtn.Text = "Remove";
             proRemoveBtn.UseVisualStyleBackColor = false;
+            proRemoveBtn.Click += proRemoveBtn_Click;
             // 
             // proUpdateBtn
             // 
