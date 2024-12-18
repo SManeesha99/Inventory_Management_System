@@ -52,23 +52,42 @@ namespace InventoryManagementSystem
                     try
                     {
                         connect.Open();
-                        String selectData = "SELECT * FROM users WHERE username = @username AND password = @password";
+                        String selectData = "SELECT COUNT(*) FROM users WHERE username = @username AND password = @password AND status = @status";
                         using (SqlCommand cmd = new SqlCommand(selectData, connect))
                         {
                             cmd.Parameters.AddWithValue("@username", login_username.Text.Trim());
                             cmd.Parameters.AddWithValue("@password", login_password.Text.Trim());
+                            cmd.Parameters.AddWithValue("@status", "Active");
 
-                            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-                            DataTable table = new DataTable();
-                            adapter.Fill(table);
+                            int rowCount = (int)cmd.ExecuteScalar();
 
-                            if(table.Rows.Count > 0)
+
+                            if(rowCount > 0)
                             {
-                                MessageBox.Show("Login Successfully!", "Information Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                string selectRole = "SELECT role FROM users WHERE username = @username AND password = @password";
 
-                                MainForm mainForm = new MainForm();
-                                mainForm.Show();
-                                this.Hide();
+                                using(SqlCommand getRole = new SqlCommand(selectRole, connect))
+                                {
+                                    getRole.Parameters.AddWithValue("@username", login_username.Text.Trim());
+                                    getRole.Parameters.AddWithValue("@password", login_password.Text.Trim());
+
+                                    string userRole = getRole.ExecuteScalar() as string;
+                                    MessageBox.Show("Login Successfully!", "Information Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                                    if(userRole == "Admin")
+                                    {
+                                        MainForm mainForm = new MainForm();
+                                        mainForm.Show();
+                                        this.Hide();
+                                    }
+                                    else
+                                    {
+                                        CashierMainForm mainForm = new CashierMainForm();
+                                        mainForm.Show();
+                                        this.Hide();
+                                    }
+                                }
+                                
                             }
                             else
                             {

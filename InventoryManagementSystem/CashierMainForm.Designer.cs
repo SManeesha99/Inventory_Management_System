@@ -1,6 +1,6 @@
 ﻿namespace InventoryManagementSystem
 {
-    partial class MainForm
+    partial class CashierMainForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,11 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            panel1 = new Panel();
-            closeBtn = new Button();
             panel2 = new Panel();
             logoutBtn = new Button();
-            button6 = new Button();
             button5 = new Button();
             button4 = new Button();
             button3 = new Button();
@@ -40,49 +37,23 @@
             label2 = new Label();
             label1 = new Label();
             pictureBox1 = new PictureBox();
-            panel3 = new Panel();
-            adminAddProducts1 = new AdminAddProducts();
-            adminCategoriesManage1 = new AdminCategoriesManage();
-            userManage1 = new UserManage();
-            adminDashboard1 = new AdminDashboard();
+            panel1 = new Panel();
             label3 = new Label();
-            panel1.SuspendLayout();
+            closeBtn = new Button();
+            panel3 = new Panel();
+            cashierOrder1 = new CashierOrder();
+            adminProductsManage1 = new AdminProductsManage();
+            adminDashboard1 = new AdminDashboard();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            panel1.SuspendLayout();
             panel3.SuspendLayout();
             SuspendLayout();
-            // 
-            // panel1
-            // 
-            panel1.Controls.Add(label3);
-            panel1.Controls.Add(closeBtn);
-            panel1.Dock = DockStyle.Top;
-            panel1.Location = new Point(0, 0);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(1335, 45);
-            panel1.TabIndex = 0;
-            // 
-            // closeBtn
-            // 
-            closeBtn.BackColor = Color.DarkRed;
-            closeBtn.Cursor = Cursors.Hand;
-            closeBtn.FlatAppearance.BorderColor = Color.Black;
-            closeBtn.FlatStyle = FlatStyle.Flat;
-            closeBtn.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
-            closeBtn.ForeColor = Color.White;
-            closeBtn.Location = new Point(1275, 7);
-            closeBtn.Name = "closeBtn";
-            closeBtn.Size = new Size(51, 30);
-            closeBtn.TabIndex = 2;
-            closeBtn.Text = "X";
-            closeBtn.UseVisualStyleBackColor = false;
-            closeBtn.Click += closeBtn_Click;
             // 
             // panel2
             // 
             panel2.BackColor = Color.FromArgb(2, 122, 74);
             panel2.Controls.Add(logoutBtn);
-            panel2.Controls.Add(button6);
             panel2.Controls.Add(button5);
             panel2.Controls.Add(button4);
             panel2.Controls.Add(button3);
@@ -94,7 +65,7 @@
             panel2.Location = new Point(0, 45);
             panel2.Name = "panel2";
             panel2.Size = new Size(286, 756);
-            panel2.TabIndex = 1;
+            panel2.TabIndex = 3;
             // 
             // logoutBtn
             // 
@@ -110,22 +81,7 @@
             logoutBtn.TabIndex = 8;
             logoutBtn.Text = "Logout";
             logoutBtn.UseVisualStyleBackColor = true;
-            logoutBtn.Click += button7_Click;
-            // 
-            // button6
-            // 
-            button6.FlatAppearance.BorderSize = 0;
-            button6.FlatAppearance.MouseDownBackColor = Color.FromArgb(1, 87, 52);
-            button6.FlatAppearance.MouseOverBackColor = Color.FromArgb(1, 87, 52);
-            button6.FlatStyle = FlatStyle.Flat;
-            button6.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
-            button6.ForeColor = Color.White;
-            button6.Location = new Point(12, 448);
-            button6.Name = "button6";
-            button6.Size = new Size(260, 40);
-            button6.TabIndex = 7;
-            button6.Text = "Customers";
-            button6.UseVisualStyleBackColor = true;
+            logoutBtn.Click += logoutBtn_Click;
             // 
             // button5
             // 
@@ -139,7 +95,7 @@
             button5.Name = "button5";
             button5.Size = new Size(260, 40);
             button5.TabIndex = 6;
-            button5.Text = "Products";
+            button5.Text = "Other";
             button5.UseVisualStyleBackColor = true;
             // 
             // button4
@@ -154,7 +110,7 @@
             button4.Name = "button4";
             button4.Size = new Size(260, 40);
             button4.TabIndex = 5;
-            button4.Text = "Categories";
+            button4.Text = "Customers";
             button4.UseVisualStyleBackColor = true;
             // 
             // button3
@@ -169,7 +125,7 @@
             button3.Name = "button3";
             button3.Size = new Size(260, 40);
             button3.TabIndex = 4;
-            button3.Text = "Users";
+            button3.Text = "Products";
             button3.UseVisualStyleBackColor = true;
             // 
             // adminDashBtn
@@ -186,7 +142,6 @@
             adminDashBtn.TabIndex = 3;
             adminDashBtn.Text = "Dashboard";
             adminDashBtn.UseVisualStyleBackColor = true;
-            adminDashBtn.Click += adminDashBtn_Click;
             // 
             // label2
             // 
@@ -219,39 +174,66 @@
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             // 
+            // panel1
+            // 
+            panel1.Controls.Add(label3);
+            panel1.Controls.Add(closeBtn);
+            panel1.Dock = DockStyle.Top;
+            panel1.Location = new Point(0, 0);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(1335, 45);
+            panel1.TabIndex = 2;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
+            label3.Location = new Point(12, 13);
+            label3.Name = "label3";
+            label3.Size = new Size(398, 23);
+            label3.TabIndex = 3;
+            label3.Text = "Inventory Management System | Cashier's Portal";
+            // 
+            // closeBtn
+            // 
+            closeBtn.BackColor = Color.DarkRed;
+            closeBtn.Cursor = Cursors.Hand;
+            closeBtn.FlatAppearance.BorderColor = Color.Black;
+            closeBtn.FlatStyle = FlatStyle.Flat;
+            closeBtn.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
+            closeBtn.ForeColor = Color.White;
+            closeBtn.Location = new Point(1275, 7);
+            closeBtn.Name = "closeBtn";
+            closeBtn.Size = new Size(51, 30);
+            closeBtn.TabIndex = 2;
+            closeBtn.Text = "X";
+            closeBtn.UseVisualStyleBackColor = false;
+            closeBtn.Click += closeBtn_Click;
+            // 
             // panel3
             // 
-            panel3.Controls.Add(adminAddProducts1);
-            panel3.Controls.Add(adminCategoriesManage1);
-            panel3.Controls.Add(userManage1);
+            panel3.Controls.Add(cashierOrder1);
+            panel3.Controls.Add(adminProductsManage1);
             panel3.Controls.Add(adminDashboard1);
             panel3.Dock = DockStyle.Fill;
             panel3.Location = new Point(286, 45);
             panel3.Name = "panel3";
             panel3.Size = new Size(1049, 756);
-            panel3.TabIndex = 2;
+            panel3.TabIndex = 4;
             // 
-            // adminAddProducts1
+            // cashierOrder1
             // 
-            adminAddProducts1.Location = new Point(0, 0);
-            adminAddProducts1.Name = "adminAddProducts1";
-            adminAddProducts1.Size = new Size(1311, 945);
-            adminAddProducts1.TabIndex = 3;
+            cashierOrder1.Location = new Point(0, 0);
+            cashierOrder1.Name = "cashierOrder1";
+            cashierOrder1.Size = new Size(1311, 945);
+            cashierOrder1.TabIndex = 2;
             // 
-            // adminCategoriesManage1
+            // adminProductsManage1
             // 
-            adminCategoriesManage1.Location = new Point(0, 0);
-            adminCategoriesManage1.Name = "adminCategoriesManage1";
-            adminCategoriesManage1.Size = new Size(1311, 945);
-            adminCategoriesManage1.TabIndex = 2;
-            adminCategoriesManage1.Load += adminCategoriesManage1_Load;
-            // 
-            // userManage1
-            // 
-            userManage1.Location = new Point(0, 0);
-            userManage1.Name = "userManage1";
-            userManage1.Size = new Size(1311, 945);
-            userManage1.TabIndex = 1;
+            adminProductsManage1.Location = new Point(0, 0);
+            adminProductsManage1.Name = "adminProductsManage1";
+            adminProductsManage1.Size = new Size(1311, 945);
+            adminProductsManage1.TabIndex = 1;
             // 
             // adminDashboard1
             // 
@@ -260,17 +242,7 @@
             adminDashboard1.Size = new Size(1311, 945);
             adminDashboard1.TabIndex = 0;
             // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
-            label3.Location = new Point(12, 13);
-            label3.Name = "label3";
-            label3.Size = new Size(393, 23);
-            label3.TabIndex = 3;
-            label3.Text = "Inventory Management System | Admin's Portal";
-            // 
-            // MainForm
+            // CashierMainForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -279,37 +251,35 @@
             Controls.Add(panel2);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "MainForm";
+            Name = "CashierMainForm";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "MainForm";
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
+            Text = "CashierMainForm";
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             panel3.ResumeLayout(false);
             ResumeLayout(false);
         }
 
         #endregion
 
-        private Panel panel1;
-        private Button closeBtn;
         private Panel panel2;
-        private PictureBox pictureBox1;
-        private Label label2;
-        private Label label1;
-        private Button adminDashBtn;
-        private Button button6;
+        private Button logoutBtn;
         private Button button5;
         private Button button4;
         private Button button3;
-        private Button logoutBtn;
+        private Button adminDashBtn;
+        private Label label2;
+        private Label label1;
+        private PictureBox pictureBox1;
+        private Panel panel1;
+        private Label label3;
+        private Button closeBtn;
         private Panel panel3;
         private AdminDashboard adminDashboard1;
-        private UserManage userManage1;
-        private AdminCategoriesManage adminCategoriesManage1;
-        private AdminAddProducts adminAddProducts1;
-        private Label label3;
+        private AdminProductsManage adminProductsManage1;
+        private CashierOrder cashierOrder1;
     }
 }

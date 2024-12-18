@@ -31,3 +31,5 @@ D:\Projects\C#\InventoryManagementSystem\InventoryManagementSystem\obj\Debug\net
 D:\Projects\C#\InventoryManagementSystem\InventoryManagementSystem\obj\Debug\net7.0-windows\InventoryManagementSystem.genruntimeconfig.cache
 D:\Projects\C#\InventoryManagementSystem\InventoryManagementSystem\obj\Debug\net7.0-windows\ref\InventoryManagementSystem.dll
 D:\Projects\C#\InventoryManagementSystem\InventoryManagementSystem\obj\Debug\net7.0-windows\InventoryManagementSystem.AdminAddProducts.resources
+D:\Projects\C#\InventoryManagementSystem\InventoryManagementSystem\obj\Debug\net7.0-windows\InventoryManagementSystem.CashierMainForm.resources
+D:\Projects\C#\InventoryManagementSystem\InventoryManagementSystem\obj\Debug\net7.0-windows\InventoryManagementSystem.CashierOrder.resources

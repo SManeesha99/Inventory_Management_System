@@ -177,25 +177,11 @@ namespace InventoryManagementSystem
 
         }
 
-        private void LoadCategories()
-        {
-            string query = "SELECT id, category FROM categories";
-
-            using (SqlCommand cmd = new SqlCommand(query, connect))
-            {
-                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-                DataTable table = new DataTable();
-                adapter.Fill(table);
-
-                pro_cat.DataSource = table;
-                pro_cat.DisplayMember = "category";
-                pro_cat.ValueMember = "id";
-            }
-        }
+        
 
         private void AdminProductsManage_Load(object sender, EventArgs e)
         {
-            LoadCategories();
+            
         }
     }
 }

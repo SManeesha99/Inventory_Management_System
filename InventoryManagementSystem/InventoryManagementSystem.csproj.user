@@ -13,6 +13,12 @@
     <Compile Update="AdminProductsManage.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Update="CashierMainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="CashierOrder.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
