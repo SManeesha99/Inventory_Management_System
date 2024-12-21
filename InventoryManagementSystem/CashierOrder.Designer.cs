@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CashierOrder));
             panel1 = new Panel();
             label1 = new Label();
             proDataGridView = new DataGridView();
@@ -56,6 +57,8 @@
             label10 = new Label();
             label2 = new Label();
             orderDataGridView = new DataGridView();
+            printDocument1 = new System.Drawing.Printing.PrintDocument();
+            printPreviewDialog1 = new PrintPreviewDialog();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)proDataGridView).BeginInit();
             panel2.SuspendLayout();
@@ -96,6 +99,7 @@
             proDataGridView.RowTemplate.Height = 29;
             proDataGridView.Size = new Size(597, 285);
             proDataGridView.TabIndex = 0;
+            proDataGridView.CellClick += proDataGridView_CellClick;
             // 
             // panel2
             // 
@@ -132,6 +136,7 @@
             orderClearBtn.TabIndex = 19;
             orderClearBtn.Text = "Clear";
             orderClearBtn.UseVisualStyleBackColor = false;
+            orderClearBtn.Click += orderClearBtn_Click;
             // 
             // orderRemoveBtn
             // 
@@ -147,6 +152,7 @@
             orderRemoveBtn.TabIndex = 18;
             orderRemoveBtn.Text = "Remove";
             orderRemoveBtn.UseVisualStyleBackColor = false;
+            orderRemoveBtn.Click += orderRemoveBtn_Click;
             // 
             // orderAddBtn
             // 
@@ -162,6 +168,7 @@
             orderAddBtn.TabIndex = 17;
             orderAddBtn.Text = "Add";
             orderAddBtn.UseVisualStyleBackColor = false;
+            orderAddBtn.Click += orderAddBtn_Click;
             // 
             // order_quantity
             // 
@@ -207,9 +214,9 @@
             proPrice_lable.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             proPrice_lable.Location = new Point(137, 173);
             proPrice_lable.Name = "proPrice_lable";
-            proPrice_lable.Size = new Size(77, 20);
+            proPrice_lable.Size = new Size(40, 20);
             proPrice_lable.TabIndex = 12;
-            proPrice_lable.Text = "Category:";
+            proPrice_lable.Text = "0.00";
             // 
             // proName_lable
             // 
@@ -217,9 +224,9 @@
             proName_lable.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             proName_lable.Location = new Point(137, 125);
             proName_lable.Name = "proName_lable";
-            proName_lable.Size = new Size(77, 20);
+            proName_lable.Size = new Size(15, 20);
             proName_lable.TabIndex = 11;
-            proName_lable.Text = "Category:";
+            proName_lable.Text = "-";
             // 
             // label6
             // 
@@ -286,6 +293,7 @@
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(158, 30);
             textBox1.TabIndex = 23;
+            textBox1.KeyDown += textBox1_KeyDown;
             // 
             // label7
             // 
@@ -311,6 +319,7 @@
             receiptBtn.TabIndex = 21;
             receiptBtn.Text = "Receipt";
             receiptBtn.UseVisualStyleBackColor = false;
+            receiptBtn.Click += receiptBtn_Click;
             // 
             // payOrderBtn
             // 
@@ -326,6 +335,7 @@
             payOrderBtn.TabIndex = 20;
             payOrderBtn.Text = "Pay Orders";
             payOrderBtn.UseVisualStyleBackColor = false;
+            payOrderBtn.Click += payOrderBtn_Click;
             // 
             // label13
             // 
@@ -389,6 +399,22 @@
             orderDataGridView.RowTemplate.Height = 29;
             orderDataGridView.Size = new Size(358, 285);
             orderDataGridView.TabIndex = 1;
+            orderDataGridView.CellClick += orderDataGridView_CellClick;
+            // 
+            // printDocument1
+            // 
+            printDocument1.BeginPrint += printDocument1_BeginPrint;
+            printDocument1.PrintPage += printDocument1_PrintPage;
+            // 
+            // printPreviewDialog1
+            // 
+            printPreviewDialog1.AutoScrollMargin = new Size(0, 0);
+            printPreviewDialog1.AutoScrollMinSize = new Size(0, 0);
+            printPreviewDialog1.ClientSize = new Size(400, 300);
+            printPreviewDialog1.Enabled = true;
+            printPreviewDialog1.Icon = (Icon)resources.GetObject("printPreviewDialog1.Icon");
+            printPreviewDialog1.Name = "printPreviewDialog1";
+            printPreviewDialog1.Visible = false;
             // 
             // CashierOrder
             // 
@@ -441,5 +467,7 @@
         private Button payOrderBtn;
         private TextBox textBox1;
         private Label label7;
+        private System.Drawing.Printing.PrintDocument printDocument1;
+        private PrintPreviewDialog printPreviewDialog1;
     }
 }
